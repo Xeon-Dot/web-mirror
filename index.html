@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Xeon Mirror</title>
+        <link
+            rel="icon"
+            href="https://cdn.xeon.kr/Xeon-favicon.svg"
+            type="image/svg+xml"
+        />
+        <meta name="color-scheme" content="dark" />
+        <meta
+            content="대한민국 사용자들을 위한 빠르고 안정적인 미러. - mirror.xeon.kr"
+            name="description"
+        />
+        <meta
+            content="A85LABS, A85LABS Mirror, 미러, Mirror, 대한민국 미러, Korea Mirror, Arch Linux, Debian, Proxmox, Termux, ROKFOSS, rokfoss, 록포스"
+            name="keywords"
+        />
+        <meta content="Xeon" name="author" />
+        <meta name="theme-color" content="#111111" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Xeon - Mirror" />
+        <meta
+            property="og:description"
+            content="대한민국 사용자들을 위한 빠르고 안정적인 미러. - mirror.xeon.kr"
+        />
+        <meta property="og:url" content="https://mirror.xeon.kr" />
+        <meta property="og:site_name" content="mirror.xeon.kr" />
+        <meta property="og:locale" content="ko_KR" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Xeon - Mirror" />
+        <meta
+            name="twitter:description"
+            content="대한민국 사용자들을 위한 빠르고 안정적인 미러. - mirror.xeon.kr"
+        />
+        <style>
+            @font-face {
+                font-family: "Pretendard Variable";
+                src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable-dynamic-subset.css");
+                font-display: swap;
+            }
+
+            body {
+                font-family:
+                    "Pretendard Variable",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    system-ui,
+                    Roboto,
+                    "Helvetica Neue",
+                    sans-serif;
+                background-color: #111;
+                color: #eee;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+                line-height: 1.5;
+            }
+            h1,
+            h2,
+            h3 {
+                margin-top: 0;
+            }
+            a {
+                color: #aaaaff;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                border-bottom: 1px dashed #444;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            .header-titles {
+                display: flex;
+                flex-direction: column;
+            }
+            .header-titles h1 {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 0;
+                font-size: 1.8rem;
+            }
+            .header-titles img {
+                height: 28px;
+            }
+            .header-titles p {
+                margin: 0;
+                margin-top: 0.2rem;
+                color: #aaa;
+            }
+            .header-guidelines {
+                text-align: right;
+                font-size: 0.85rem;
+            }
+            .header-guidelines ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .sponsor-box {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+                border: 1px solid #333;
+                background: #000;
+                text-align: center;
+            }
+            .sponsor-box p {
+                color: #aaa;
+                font-size: 0.9rem;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+            .sponsor-box img {
+                height: 40px;
+            }
+
+            .main-content {
+                margin-top: 2rem;
+            }
+
+            .distros-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1rem;
+            }
+
+            .distro-card {
+                background: #000;
+                border: 1px solid #333;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+            }
+            .distro-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+            }
+            .distro-header img {
+                height: 32px;
+                width: 32px;
+                object-fit: contain;
+                margin-right: 1rem;
+            }
+            .distro-header h3 {
+                margin: 0;
+                font-size: 1.1rem;
+                color: #fff;
+            }
+            .distro-header p {
+                margin: 0;
+                font-size: 0.8rem;
+                color: #aaa;
+            }
+            .distro-info {
+                margin-top: auto;
+                font-size: 0.8rem;
+                color: #aaa;
+                margin-bottom: 1rem;
+            }
+            .distro-btn {
+                display: block;
+                text-align: center;
+                background: #222;
+                border: 1px solid #444;
+                color: #eee;
+                padding: 0.5rem;
+                font-size: 0.9rem;
+                cursor: pointer;
+            }
+            .distro-btn:hover {
+                background: #444;
+                text-decoration: none;
+            }
+            .distro-btn.inactive {
+                color: #888;
+                cursor: not-allowed;
+            }
+            .distro-btn.inactive:hover {
+                background: #222;
+            }
+            .distro-btn.active {
+                background: #aaaaff;
+                color: #111;
+                border-color: #aaaaff;
+                font-weight: bold;
+            }
+            .distro-btn.active:hover {
+                background: #9999f5;
+            }
+
+            .banner {
+                margin: 2rem 0;
+                display: block;
+            }
+            .banner img {
+                width: 100%;
+                border: 1px solid #333;
+            }
+
+            .server-info {
+                margin-top: 3rem;
+                padding-top: 1rem;
+                border-top: 1px solid #333;
+            }
+            .server-info h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            .info-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            .info-item h3 {
+                font-size: 1rem;
+                color: #aaaaff;
+                margin-bottom: 0.5rem;
+                margin-top: 0;
+            }
+            .info-item p {
+                margin: 0;
+                font-size: 0.9rem;
+                color: #ccc;
+            }
+
+            .footer {
+                margin-top: 3rem;
+                font-size: 0.8rem;
+                color: #666;
+                border-top: 1px solid #333;
+                padding-top: 1rem;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header-container">
+            <div class="header-titles">
+                <h1>
+                    <img
+                        src="https://cdn.xeon.kr/Xeon-logo-whitetext-tran.svg"
+                        alt="A85LABS Logo"
+                    />
+                    Xeon Mirror
+                </h1>
+                <p>대한민국 사용자들을 위한 빠르고 안정적인 미러</p>
+            </div>
+            <div class="header-guidelines">
+                <ul>
+                    <li>
+                        <a
+                            href="https://github.com/sponsors/DevNergis"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >❤️ 기부하기</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sponsor-box">
+            <p>스폰서</p>
+            <a href="https://eliv.kr" target="_blank" rel="noopener noreferrer">
+                <img
+                    src="https://eliv.speedycdn.net/eliv/Assets/Images/Logo/WHITE.svg"
+                    alt="PROJECT ELIV Logo"
+                />
+            </a>
+        </div>
+
+        <hr style="border: 0.5px solid #333; margin: 2rem 0" />
+
+        <div class="main-content">
+            <h2>주요 배포판</h2>
+            <div id="distro-list" class="distros-grid">
+                <!-- JavaScript renders this -->
+            </div>
+            <p id="no-results" style="display: none">검색 결과가 없습니다.</p>
+        </div>
+
+        <hr style="border: 0.5px solid #333; margin: 2rem 0" />
+
+        <a
+            class="banner"
+            href="https://krfoss.org"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img
+                src="https://cdn.xeon.kr/ROKFOSS/ROKFOSS_SPIN_LOGO.svg"
+                alt="ROKFOSS SPIN LOGO Banner"
+            />
+        </a>
+
+        <div class="server-info">
+            <h2>미러 서버 정보</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>서버 위치</h3>
+                    <p>
+                        대한민국, 경기도, 시흥시<br />(Siheung-si, Gyeonggi-do,
+                        Korea)
+                    </p>
+                </div>
+                <div class="info-item">
+                    <h3>네트워크</h3>
+                    <p>LGU+ 대칭형 500 Mbps</p>
+                </div>
+                <div class="info-item">
+                    <h3>문의</h3>
+                    <p>mirror@xeon.kr</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Xeon Mirror. All rights reserved.</p>
+        </div>
+
+        <script>
+            // {
+            //     name: "Arch Linux",
+            //     version: "Packages & ISO",
+            //     url: "/archlinux/",
+            //     icon: "https://cdn.xeon.kr/LOGO/archlinux-512.png",
+            //     lastSync: "3시간",
+            //     proxy: false,
+            //   },
+            //   {
+            //     name: "Debian",
+            //     version: "Packages",
+            //     url: "/debian",
+            //     icon: "https://cdn.xeon.kr/LOGO/debian-logo-1024x576.png",
+            //     lastSync: "3시간",
+            //     proxy: false,
+            //     inactive: true,
+            //   },
+            //   {
+            //     name: "Debian Security",
+            //     version: "Packages",
+            //     url: "/debian-security",
+            //     icon: "https://cdn.xeon.kr/LOGO/debian-logo-1024x576.png",
+            //     lastSync: "3시간",
+            //     proxy: false,
+            //     inactive: true,
+            //   },
+            //   {
+            //     name: "OPNsense",
+            //     version: "Packages & ISO",
+            //     url: "/opnsense",
+            //     icon: "https://cdn.xeon.kr/LOGO/OPNsense_verticaal.svg",
+            //     lastSync: "3시간",
+            //     proxy: false,
+            //   },
+            //   {
+            //     name: "Proxmox",
+            //     version: "Packages & ISO",
+            //     url: "/proxmox/",
+            //     icon: "https://cdn.xeon.kr/LOGO/proxmox-logo-stacked-color.svg",
+            //     lastSync: "3시간",
+            //     proxy: false,
+            //   },
+
+            const distros = [
+                {
+                    name: "Termux",
+                    version: "Packages",
+                    url: "/termux",
+                    icon: "https://cdn.xeon.kr/LOGO/termux.ico",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+                {
+                    name: "CachyOS",
+                    version: "Packages & ISO",
+                    url: "/cachyos",
+                    icon: "https://cdn.xeon.kr/LOGO/cachyos.svg",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+                {
+                    name: "PuTTY",
+                    version: "Packages",
+                    url: "/putty",
+                    icon: "https://cdn.xeon.kr/LOGO/putty.ico",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+            ];
+
+            const distroList = document.getElementById("distro-list");
+
+            function renderDistros() {
+                distroList.innerHTML = "";
+                distros.forEach((distro) => {
+                    const syncStatusText = distro.proxy
+                        ? `${distro.lastSync}에서 프록싱`
+                        : `동기화 주기: ${distro.lastSync}`;
+
+                    const isInactive = distro.inactive === true;
+                    const buttonClass = isInactive
+                        ? "distro-btn inactive"
+                        : "distro-btn active";
+                    const buttonText = isInactive ? "비활성화됨" : "파일 보기";
+                    const buttonHref = isInactive
+                        ? "javascript:void(0)"
+                        : distro.url;
+
+                    const card = document.createElement("div");
+                    card.className = "distro-card";
+                    card.innerHTML = `
+                    <div class="distro-header">
+                        <img src="${distro.icon}" alt="${distro.name} 로고" onerror="this.style.display='none';">
+                        <div>
+                            <h3>${distro.name}</h3>
+                            <p>${distro.version}</p>
+                        </div>
+                    </div>
+                    <div class="distro-info">
+                        ${syncStatusText}
+                    </div>
+                    <a href="${buttonHref}" class="${buttonClass}">
+                        ${buttonText}
+                    </a>
+                `;
+                    distroList.appendChild(card);
+                });
+            }
+
+            renderDistros();
+        </script>
+    </body>
+</html>
