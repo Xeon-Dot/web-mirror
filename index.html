@@ -35,7 +35,248 @@
             name="twitter:description"
             content="대한민국 사용자들을 위한 빠르고 안정적인 미러. - mirror.xeon.kr"
         />
-        <link rel="stylesheet" href="/style.css" />
+        <style>
+            @font-face {
+                font-family: "Pretendard Variable";
+                src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable-dynamic-subset.css");
+                font-display: swap;
+            }
+
+            body {
+                font-family:
+                    "Pretendard Variable",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    system-ui,
+                    Roboto,
+                    "Helvetica Neue",
+                    sans-serif;
+                background-color: #111;
+                color: #eee;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+                line-height: 1.5;
+            }
+            h1,
+            h2,
+            h3 {
+                margin-top: 0;
+            }
+            a {
+                color: #aaaaff;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                border-bottom: 1px dashed #444;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            .header-titles {
+                display: flex;
+                flex-direction: column;
+            }
+            .header-titles h1 {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 0;
+                font-size: 1.8rem;
+            }
+            .header-titles img {
+                height: 28px;
+            }
+            .header-titles p {
+                margin: 0;
+                margin-top: 0.2rem;
+                color: #aaa;
+            }
+            .header-guidelines {
+                text-align: right;
+                font-size: 0.85rem;
+            }
+            .header-guidelines ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .sponsor-box {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+                border: 1px solid #333;
+                background: #000;
+                text-align: center;
+            }
+            .sponsor-box p {
+                color: #aaa;
+                font-size: 0.9rem;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+            .sponsor-box img {
+                height: 40px;
+            }
+
+            .main-content {
+                margin-top: 2rem;
+            }
+
+            .distros-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1rem;
+            }
+
+            .distro-card {
+                background: #000;
+                border: 1px solid #333;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+            }
+            .distro-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+            }
+            .distro-header img {
+                height: 32px;
+                width: 32px;
+                object-fit: contain;
+                margin-right: 1rem;
+            }
+            .distro-header h3 {
+                margin: 0;
+                font-size: 1.1rem;
+                color: #fff;
+            }
+            .distro-header p {
+                margin: 0;
+                font-size: 0.8rem;
+                color: #aaa;
+            }
+            .distro-info {
+                margin-top: auto;
+                font-size: 0.8rem;
+                color: #aaa;
+                margin-bottom: 1rem;
+            }
+            .distro-btn {
+                display: block;
+                text-align: center;
+                background: #222;
+                border: 1px solid #444;
+                color: #eee;
+                padding: 0.5rem;
+                font-size: 0.9rem;
+                cursor: pointer;
+            }
+            .distro-btn:hover {
+                background: #444;
+                text-decoration: none;
+            }
+            .distro-btn.inactive {
+                color: #888;
+                cursor: not-allowed;
+            }
+            .distro-btn.inactive:hover {
+                background: #222;
+            }
+            .distro-btn.active {
+                background: #aaaaff;
+                color: #111;
+                border-color: #aaaaff;
+                font-weight: bold;
+            }
+            .distro-btn.active:hover {
+                background: #9999f5;
+            }
+
+            .banner {
+                margin: 2rem 0;
+                display: block;
+            }
+            .banner img {
+                width: 100%;
+                border: 1px solid #333;
+            }
+
+            .sync-badge {
+                display: inline-block;
+                padding: 0.1rem 0.4rem;
+                border-radius: 3px;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+                vertical-align: middle;
+                margin-left: 0.3rem;
+            }
+            .sync-badge.success {
+                background: #1b5e20;
+                color: #a5d6a7;
+            }
+            .sync-badge.syncing {
+                background: #e65100;
+                color: #ffcc80;
+            }
+            .sync-badge.failed {
+                background: #b71c1c;
+                color: #ef9a9a;
+            }
+            .sync-badge.unknown {
+                background: #37474f;
+                color: #90a4ae;
+            }
+
+            .distro-detail {
+                font-size: 0.75rem;
+                color: #777;
+                margin-top: 0.15rem;
+            }
+
+            .server-info {
+                margin-top: 3rem;
+                padding-top: 1rem;
+                border-top: 1px solid #333;
+            }
+            .server-info h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            .info-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            .info-item h3 {
+                font-size: 1rem;
+                color: #aaaaff;
+                margin-bottom: 0.5rem;
+                margin-top: 0;
+            }
+            .info-item p {
+                margin: 0;
+                font-size: 0.9rem;
+                color: #ccc;
+            }
+
+            .footer {
+                margin-top: 3rem;
+                font-size: 0.8rem;
+                color: #666;
+                border-top: 1px solid #333;
+                padding-top: 1rem;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
         <div class="header-container">
@@ -122,6 +363,172 @@
             <p>&copy; 2026 Xeon Mirror. All rights reserved.</p>
         </div>
 
-        <script src="/script.js"></script>
+        <script>
+            const API_BASE = "/api";
+
+            const distros = [
+                {
+                    name: "Arch Linux",
+                    apiName: "archlinux",
+                    version: "Packages & ISO",
+                    url: "/archlinux/",
+                    icon: "https://cdn.xeon.kr/LOGO/archlinux-512.png",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+                {
+                    name: "CachyOS",
+                    apiName: "cachyos",
+                    version: "Packages & ISO",
+                    url: "/cachyos",
+                    icon: "https://cdn.xeon.kr/LOGO/cachyos.svg",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+                {
+                    name: "PuTTY",
+                    apiName: "putty",
+                    version: "Packages",
+                    url: "/putty",
+                    icon: "https://cdn.xeon.kr/LOGO/putty.ico",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+                {
+                    name: "Tails",
+                    apiName: "tails",
+                    version: "Packages & ISO",
+                    url: "/tails",
+                    icon: "https://tails.net/lib/logo.svg",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+                {
+                    name: "Termux",
+                    apiName: "termux",
+                    version: "Packages",
+                    url: "/termux",
+                    icon: "https://cdn.xeon.kr/LOGO/termux.ico",
+                    lastSync: "3시간",
+                    proxy: false,
+                },
+            ];
+
+            let mirrorStatusMap = {};
+
+            function formatLastSync(lastSync) {
+                if (!lastSync) return "-";
+                const d = new Date(lastSync);
+                if (isNaN(d.getTime())) return "-";
+                const diffMs = new Date() - d;
+                const diffMin = Math.floor(diffMs / 60000);
+                if (diffMin < 1) return "방금 전";
+                if (diffMin < 60) return `${diffMin}분 전`;
+                const diffHr = Math.floor(diffMin / 60);
+                if (diffHr < 24) return `${diffHr}시간 전`;
+                const diffDay = Math.floor(diffHr / 24);
+                return `${diffDay}일 전`;
+            }
+
+            function formatBytes(bytes) {
+                if (!bytes || bytes === 0) return "0 B";
+                const k = 1024;
+                const sizes = ["B", "KB", "MB", "GB", "TB"];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return (
+                    parseFloat((bytes / Math.pow(k, i)).toFixed(2)) +
+                    " " +
+                    sizes[i]
+                );
+            }
+
+            function getStatusBadge(status, enabled) {
+                if (!enabled)
+                    return '<span class="sync-badge unknown">비활성</span>';
+                switch ((status || "").toLowerCase()) {
+                    case "success":
+                        return '<span class="sync-badge success">동기화됨</span>';
+                    case "syncing":
+                        return '<span class="sync-badge syncing">동기화 중</span>';
+                    case "failed":
+                        return '<span class="sync-badge failed">실패</span>';
+                    default:
+                        return '<span class="sync-badge unknown">알 수 없음</span>';
+                }
+            }
+
+            const distroList = document.getElementById("distro-list");
+
+            function renderDistros() {
+                distroList.innerHTML = "";
+                distros.forEach((distro) => {
+                    const status = mirrorStatusMap[distro.apiName];
+                    const isInactive =
+                        distro.inactive === true || (status && !status.enabled);
+                    const syncStatusText = distro.proxy
+                        ? `${distro.lastSync}에서 프록싱`
+                        : `동기화 주기: ${distro.lastSync}`;
+
+                    const badge = status
+                        ? getStatusBadge(status.status, status.enabled)
+                        : "";
+                    const sizeText =
+                        status && status.size_bytes > 0
+                            ? status.size_human
+                            : "-";
+                    const lastSyncText =
+                        status && status.last_sync
+                            ? formatLastSync(status.last_sync)
+                            : "-";
+
+                    const buttonClass = isInactive
+                        ? "distro-btn inactive"
+                        : "distro-btn active";
+                    const buttonText = isInactive ? "비활성화됨" : "파일 보기";
+                    const buttonHref = isInactive
+                        ? "javascript:void(0)"
+                        : distro.url;
+
+                    const card = document.createElement("div");
+                    card.className = "distro-card";
+                    card.innerHTML = `
+                    <div class="distro-header">
+                        <img src="${distro.icon}" alt="${distro.name} 로고" onerror="this.style.display='none';">
+                        <div>
+                            <h3>${distro.name} ${badge}</h3>
+                            <p>${distro.version}</p>
+                        </div>
+                    </div>
+                    <div class="distro-info">
+                        ${syncStatusText}
+                        <div class="distro-detail">저장공간: ${sizeText} <br /> 마지막 동기화: ${lastSyncText}</div>
+                    </div>
+                    <a href="${buttonHref}" class="${buttonClass}">
+                        ${buttonText}
+                    </a>
+                `;
+                    distroList.appendChild(card);
+                });
+            }
+
+            async function fetchStatus() {
+                try {
+                    const res = await fetch(`${API_BASE}/status`);
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    mirrorStatusMap = {};
+                    (data.mirrors || []).forEach((m) => {
+                        mirrorStatusMap[m.name] = m;
+                    });
+                    renderDistros();
+                } catch (e) {
+                    console.error("상태 불러오기 실패:", e);
+                }
+            }
+
+            renderDistros();
+            fetchStatus();
+            setInterval(fetchStatus, 60000);
+        </script>
     </body>
 </html>
