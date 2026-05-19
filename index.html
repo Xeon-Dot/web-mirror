@@ -413,7 +413,6 @@
                     url: "/archlinux/",
                     icon: "https://cdn.xeon.kr/LOGO/archlinux-512.png",
                     lastSync: "1시간",
-                    proxy: false,
                 },
                 {
                     name: "CachyOS",
@@ -422,7 +421,6 @@
                     url: "/cachyos",
                     icon: "https://cdn.xeon.kr/LOGO/cachyos.svg",
                     lastSync: "1시간",
-                    proxy: false,
                 },
                 {
                     name: "PuTTY",
@@ -431,7 +429,6 @@
                     url: "/putty",
                     icon: "https://cdn.xeon.kr/LOGO/putty.ico",
                     lastSync: "1시간",
-                    proxy: false,
                 },
                 {
                     name: "Tails",
@@ -440,7 +437,6 @@
                     url: "/tails",
                     icon: "https://tails.net/lib/logo.svg",
                     lastSync: "1시간",
-                    proxy: false,
                 },
                 {
                     name: "Termux",
@@ -449,7 +445,14 @@
                     url: "/termux",
                     icon: "https://cdn.xeon.kr/LOGO/termux.ico",
                     lastSync: "1시간",
-                    proxy: false,
+                },
+                {
+                    name: "Void Linux",
+                    apiName: "voidlinux",
+                    version: "Packages & ISO",
+                    url: "/voidlinux",
+                    icon: "https://voidlinux.org/assets/img/void_bg.png",
+                    lastSync: "1시간",
                 },
             ];
 
@@ -504,9 +507,7 @@
                     const status = mirrorStatusMap[distro.apiName];
                     const isInactive =
                         distro.inactive === true || (status && !status.enabled);
-                    const syncStatusText = distro.proxy
-                        ? `${distro.lastSync}에서 프록싱`
-                        : `동기화 주기: ${distro.lastSync}`;
+                    const syncStatusText = `동기화 주기: ${distro.lastSync}`;
 
                     const badge = status
                         ? getStatusBadge(status.status, status.enabled)
