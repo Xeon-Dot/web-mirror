@@ -236,6 +236,11 @@
                 color: #90a4ae;
             }
 
+            .sync-badge.pending {
+                background: #1565c0;
+                color: #bbdefb;
+            }
+
             .distro-detail {
                 font-size: 0.75rem;
                 color: #777;
@@ -493,7 +498,7 @@
                     case "running":
                         return '<span class="sync-badge syncing">동기화 중</span>';
                     case "pending":
-                        return '<span class="sync-badge syncing">동기화 대기 중</span>';
+                        return '<span class="sync-badge pending">동기화 대기 중</span>';
                     case "failed":
                         return '<span class="sync-badge failed">실패</span>';
                     default:
