@@ -490,8 +490,10 @@
                 switch ((status || "").toLowerCase()) {
                     case "success":
                         return '<span class="sync-badge success">동기화됨</span>';
-                    case "syncing":
+                    case "running":
                         return '<span class="sync-badge syncing">동기화 중</span>';
+                    case "pending":
+                        return '<span class="sync-badge syncing">동기화 대기 중</span>';
                     case "failed":
                         return '<span class="sync-badge failed">실패</span>';
                     default:
